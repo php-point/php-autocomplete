@@ -1,0 +1,76 @@
+{
+  "name": "php-autocomplete-by-phppoint",
+  "displayName": "php snippets and auto complete",
+  "description": "we are provide php autocomplete extension for best coding.",
+  "version": "1.0.250825",
+  "publisher": "phppoint",
+  "icon": "php_auto_complete.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/php-point/php-autocomplete.git"
+  },
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "activationEvents": [
+      "onLanguage:php"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "php",
+        "aliases": [
+          "PHP",
+          "php"
+        ],
+        "extensions": [
+          ".php"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "phpLaravelComplete.importClass",
+        "title": "Import Class (phppoint)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == php",
+          "command": "phpLaravelComplete.importClass",
+          "group": "navigation"
+        }
+      ]
+    },
+    "completionItemProvider": [
+      {
+        "language": "php",
+        "provider": "./out/extension",
+        "triggerCharacters": [
+          "$",
+          ">",
+          ":",
+          " "
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.99.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.21.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
